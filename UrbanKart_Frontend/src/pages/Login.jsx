@@ -63,7 +63,7 @@ const Login = () => {
       setLoading(true);
       console.log("email "+user.email+" pwd "+user.password);
       AuthenticationService.login(user).then(response => {
-          toast.success("Welcome to MedEasyIn "+response.data.firstName ,
+          toast.success("Welcome to UrbanKart "+response.data.firstName ,
            {autoClose: 1500});
           //set user in session.
           dispatch(setCurrentUser(response.data));

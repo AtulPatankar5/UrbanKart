@@ -54,21 +54,6 @@ const Products = () => {
       setCategorie(response.data);
     });
 
-    // const getProducts = async () => {
-    //   setLoading(true);
-    //   const response = await fetch("https://fakestoreapi.com/products/");
-    //   if (componentMounted) {
-    //     setData(await response.clone().json());
-    //     setFilter(await response.json());
-    //     setLoading(false);
-    //   }
-
-    //   return () => {
-    //     componentMounted = false;
-    //   };
-    // };
-
-    // getProducts();
   }, []);
 
   const Loading = () => {
@@ -101,12 +86,10 @@ const Products = () => {
 
 
   const filterProduct = (id) => {
-
-    // const updatedList = data.filter((item) => item.category === cat);
     ProductService.getProductsByCategory(id).then((response)=>{
       setFilter(response.data)
     });
-    // setFilter(updatedList);
+
   }
 
 
@@ -145,13 +128,10 @@ const Products = () => {
                 </div>
                 <ul className="list-group list-group-flush">
                   <li className="list-group-item lead">Rs. {product.price}</li>
-                  {/* <li className="list-group-item">Dapibus ac facilisis in</li>
-                    <li className="list-group-item">Vestibulum at eros</li> */}
+           
                 </ul>
                 <div className="card-body">
-                  {/* <Link to={"/product/" + product.id} className="btn btn-dark m-1">
-                    Buy Now
-                  </Link> */}
+               
                   <button className="btn btn-dark m-1" onClick={() => addProduct(product)}>
                     Add to Cart
                   </button>

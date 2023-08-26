@@ -14,4 +14,5 @@ public class AuthRequest {
 	private String email;
 	@NotBlank(message = "password can't be blank or null")
 	private String password;
+	
 }

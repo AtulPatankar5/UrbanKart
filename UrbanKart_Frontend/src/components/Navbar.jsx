@@ -37,7 +37,7 @@ const Navbar = () => {
                 :
                 <NavLink className="navbar-brand fw-bold fs-4 px-2" to="/updateproduct"> UrbanKart</NavLink> 
             }
-                {/* <NavLink className="navbar-brand fw-bold fs-4 px-2" to="/"> MedEasyIn</NavLink> */}
+                {}
                 <button className="navbar-toggler mx-2" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
