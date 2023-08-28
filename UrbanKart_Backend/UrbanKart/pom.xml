@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.acts</groupId>
-	<artifactId>MedEasyIn</artifactId>
+	<artifactId>UrbanKart</artifactId>
 	<version>0.0.1</version>
-	<name>MedEasyIn</name>
+	<name>UrbanKart</name>
 	<description>Spring Security Using Memory authentication</description>
 	<properties>
 		<java.version>11</java.version>

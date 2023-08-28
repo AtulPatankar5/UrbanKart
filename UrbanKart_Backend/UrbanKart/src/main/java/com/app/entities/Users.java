@@ -50,10 +50,7 @@ public class Users extends BaseEntity{
 	@OneToOne(mappedBy = "user",cascade = CascadeType.ALL,orphanRemoval = true)
 	@JsonIgnore
 	private Carts cart;
-	/*
-	 {"firstName":"Mathuresh","lastName":"Yadav","email":"m@gmail.com","password":"satyajeet","role":"CUSTOMER","mobileNumber":"1234567890",}*/
-//	@OneToMany if time permits
-//	List<DeliveryAddress> addresses = new ArrayList<DeliveryAddress>();
+	
 	public Users() {
 		super();
 		System.out.println("in ctor "+getClass().getName());
@@ -147,10 +144,5 @@ public class Users extends BaseEntity{
 		return "Users [firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", password="
 				+ password + ", role=" + role + ", mobileNumber=" + mobileNumber + ", getId()=" + getId() + "]";
 	}
-	
-	
-	
-	
-	
 
 }
