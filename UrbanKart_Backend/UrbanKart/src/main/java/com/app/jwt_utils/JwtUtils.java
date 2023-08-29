@@ -25,8 +25,9 @@ public class JwtUtils {
 	@Value("${SECRET_KEY}")
 	private String jwtSecret;
 
-	@Value("${EXP_TIMEOUT}")
+	@Value("${EXP_TIMEOUT}")// 24 hour 
 	private int jwtExpirationMs;
+
 	private Key key;
 
 	@PostConstruct
@@ -36,7 +37,7 @@ public class JwtUtils {
 
 	// will be invoked by REST Controller(authentication controller) , upon
 	// successful authentication
-	public String generateJwtToken(Authentication authentication) {
+	public String generateJwtToken(Authentication authentication) {// happens after authentication 
 
 		log.info("generate jwt token " + authentication);
 		CustomUserDetails userPrincipal = (CustomUserDetails) authentication.getPrincipal();
@@ -46,7 +47,6 @@ public class JwtUtils {
 		return Jwts.builder() // JWTs : a Factory class , used to create JWT tokens
 				.setSubject((userPrincipal.getUsername())) // setting subject of the token(typically user name) :sets
 															// subject claim part of the token
-				// .claim("roles", userPrincipal.getAuthorities())
 				.setIssuedAt(new Date())// Sets the JWT Claims iat
 										// (issued at) value of
 										// current date

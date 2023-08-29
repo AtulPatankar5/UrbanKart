@@ -23,17 +23,18 @@ import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequestMapping("/auth")
-@Slf4j
+@Slf4j // SLF4J is a logging framework for Java applications that provides a simple and
+		// efficient way to log messages from your code
 public class SignInSignUpController {
 
-	//dep : JWT utils : for generating JWT
+	// dep : JWT utils : for generating JWT
 	@Autowired
 	private JwtUtils utils;
-	
+
 	// dep : Auth mgr
 	@Autowired
 	private AuthenticationManager manager;
-	
+
 	// dep : user service for handling users
 	@Autowired
 	private UserService userService;
@@ -41,15 +42,17 @@ public class SignInSignUpController {
 	@Autowired
 	private ModelMapper mapper;
 
-	// add a method to authenticate user . In case of success --send back token, o.w send back err mesg
+	// add a method to authenticate user . In case of success --send back token, o.w
+	// send back err mesg
 	@PostMapping("/signin")
 	public ResponseEntity<?> validateUserCreateToken(@RequestBody @Valid AuthRequest request) {
-		
+
 		// store incoming user details(not yet validated) into Authentication object
 		// Authentication i/f ---> implemented by UserNamePasswordAuthToken
-		UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(request.getEmail(),request.getPassword());
+		UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(request.getEmail(),
+				request.getPassword());
 		log.info("auth token " + authToken);
-		
+
 		// authenticate the credentials
 		Authentication authentication = manager.authenticate(authToken);
 		log.info("auth token again " + authentication.getPrincipal().getClass());

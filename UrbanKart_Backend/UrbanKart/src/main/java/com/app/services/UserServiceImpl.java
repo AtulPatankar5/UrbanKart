@@ -53,7 +53,7 @@ public class UserServiceImpl implements UserService {
 
 		Users addeduser = userRepo.save(trueUser);
 		if (addeduser.getRole() == Role.CUSTOMER) {
-			Carts cart = cartService.addCart(addeduser);
+			Carts cart = cartService.addCart(addeduser);// 1 new cart is created for every new user
 			addeduser.setCart(cart);
 			return mapper.map(addeduser, UsersRespDTO.class);// show only the required details(Exclude password) of users to Client
 		} else {
