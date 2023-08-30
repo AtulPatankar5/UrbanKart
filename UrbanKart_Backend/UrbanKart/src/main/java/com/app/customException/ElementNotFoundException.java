@@ -6,10 +6,6 @@ public class ElementNotFoundException extends RuntimeException {
 	private String elementName;
 	private String errorCode;
 	private String errorMessage;
-	
-//	public UserAlreadyExistsException(String mesg) {
-//		super(mesg);
-//	}
 
 	public String getErrorCode() {
 		return errorCode;
@@ -41,7 +37,7 @@ public class ElementNotFoundException extends RuntimeException {
 
 	public ElementNotFoundException(String name, String errorCode, String errorMessage) {
 		super();
-		this.elementName=name;
+		this.elementName = name;
 		this.errorCode = errorCode;
 		this.errorMessage = errorMessage;
 	}
@@ -49,5 +45,5 @@ public class ElementNotFoundException extends RuntimeException {
 	public ElementNotFoundException() {
 		super();
 	}
-	
+
 }

@@ -9,20 +9,17 @@ public class OrderStatusDTO {
 	private String status;
 	private LocalDate deliveryDate;
 
-
 	public OrderStatusDTO() {
 		super();
 	}
 
-	public OrderStatusDTO(Long orderId, String status ,LocalDate deliveryDate ) {
+	public OrderStatusDTO(Long orderId, String status, LocalDate deliveryDate) {
 		super();
 		this.orderId = orderId;
 		this.status = status;
-		this.deliveryDate =deliveryDate;
+		this.deliveryDate = deliveryDate;
 
 	}
-
-
 
 	public LocalDate getDeliveryDate() {
 		return deliveryDate;
@@ -47,7 +44,5 @@ public class OrderStatusDTO {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-
-
 
 }

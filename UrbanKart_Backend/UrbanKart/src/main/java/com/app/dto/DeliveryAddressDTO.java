@@ -1,15 +1,15 @@
 package com.app.dto;
 
-public class DeliveryAddressDTO{
+public class DeliveryAddressDTO {
 	private String addressLine1;
 	private String addressLine2;
 	private String city;
 	private String state;
 	private String zipCode;
-	
+
 	public DeliveryAddressDTO() {
 		super();
-		System.out.println("in ctor "+getClass().getName());
+		System.out.println("in ctor " + getClass().getName());
 	}
 
 	public String getAddressLine1() {
@@ -60,10 +60,5 @@ public class DeliveryAddressDTO{
 		this.state = state;
 		this.zipCode = zipCode;
 	}
-
-	
-	
-	
-	
 
 }

@@ -18,6 +18,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name = "cart_items")
 public class CartItems extends BaseEntity{
+	
 	@PositiveOrZero(message = "Quantity can't be Negative")
 	@Column(name="quantity")
 	private Integer quantity;

@@ -8,6 +8,4 @@ import com.app.entities.Users;
 
 public interface UserRepository extends JpaRepository<Users,Long> {
 	Optional<Users> findByEmail(String email);
-
-
 }

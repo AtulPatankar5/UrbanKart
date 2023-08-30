@@ -24,7 +24,7 @@ public class ImageHandlingServiceImpl implements ImageHandlingService {
 
 	@Value("${content.upload.folder}")
 	private String folderName;
-	// dep : dao layer i/f :
+
 	@Autowired
 	private ProductRepository productRepo;
 
@@ -46,22 +46,10 @@ public class ImageHandlingServiceImpl implements ImageHandlingService {
 		Products product = productRepo.findById(productId).orElseThrow(
 				() -> new ResourceNotFoundException("Invalid Product Id : Image Uploading failed!!!!!!!!"));
 		// valid product : PERSISTENT --create complete path to the image
-		String targetPath = folderName +  File.separator +  imageFile.getOriginalFilename();
+		String targetPath = folderName + File.separator + imageFile.getOriginalFilename();
 		System.out.println(targetPath);
 		// copy multipart image file contents to the specified path
 		Files.copy(imageFile.getInputStream(), Paths.get(targetPath), StandardCopyOption.REPLACE_EXISTING);
-		// OR for DB
-		/*
-		 * Product entity :Add @Lob private byte[] image;
-		 * product.setImage(imageFile.getBytes());
-		 */
-		
-				//Alternative approach : to store complete img URL in DB : not using it currently !
-//		    String uriString = ServletUriComponentsBuilder.
-//		    		fromCurrentContextPath().path(folderName).path(imageFile.getOriginalFilename()).toUriString();
-		 //   String uri = uriComponents.toUriString();
-		 //   System.out.println("img url "+uriString);
-		// save image path in DB
 		product.setImagePath(targetPath);
 		return "Image Uploaded Successfully";
 	}

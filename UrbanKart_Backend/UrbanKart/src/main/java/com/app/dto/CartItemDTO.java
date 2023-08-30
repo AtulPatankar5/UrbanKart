@@ -5,7 +5,6 @@ public class CartItemDTO {
 	private Long userId;
 	private Long productId;
 
-
 	public CartItemDTO(Integer quantity, Long userId, Long productId) {
 		super();
 		this.quantity = quantity;
@@ -40,8 +39,5 @@ public class CartItemDTO {
 	public void setProductId(Long productId) {
 		this.productId = productId;
 	}
-
-
-	
 
 }

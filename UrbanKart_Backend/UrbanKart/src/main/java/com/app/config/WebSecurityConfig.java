@@ -45,16 +45,12 @@ public class WebSecurityConfig {
 				.antMatchers("/auth/**", "/swagger*/**", "/v*/api-docs/**").permitAll()
 
 				// only required for JS clnts (react / angular) : for the pre flight requests
-				.antMatchers(HttpMethod.OPTIONS).permitAll()
-				.antMatchers(HttpMethod.GET, "/products/**", "/image/**").permitAll()
-				.antMatchers(HttpMethod.GET, "/category/**").permitAll()
-				.antMatchers("/category/**").hasAuthority("ADMIN")
-				.antMatchers(HttpMethod.PUT, "/user/**").hasAuthority("CUSTOMER")
-				.antMatchers("/user/admin/**", "/products/**").hasAuthority("ADMIN")
-				.antMatchers("/order/admin").hasAuthority("ADMIN")
-				.antMatchers("/order/user/cancel/**").hasAuthority("CUSTOMER")
-				.antMatchers("/cartitem/**").hasAuthority("CUSTOMER")
-				.antMatchers("/cart/**").hasAuthority("CUSTOMER")
+				.antMatchers(HttpMethod.OPTIONS).permitAll().antMatchers(HttpMethod.GET, "/products/**", "/image/**")
+				.permitAll().antMatchers(HttpMethod.GET, "/category/**").permitAll().antMatchers("/category/**")
+				.hasAuthority("ADMIN").antMatchers(HttpMethod.PUT, "/user/**").hasAuthority("CUSTOMER")
+				.antMatchers("/user/admin/**", "/products/**").hasAuthority("ADMIN").antMatchers("/order/admin")
+				.hasAuthority("ADMIN").antMatchers("/order/user/cancel/**").hasAuthority("CUSTOMER")
+				.antMatchers("/cartitem/**").hasAuthority("CUSTOMER").antMatchers("/cart/**").hasAuthority("CUSTOMER")
 
 				.anyRequest().authenticated().and().sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
@@ -70,7 +66,7 @@ public class WebSecurityConfig {
 		return config.getAuthenticationManager();
 	}
 
-//for global CORS enabling
+	//for global CORS enabling
 	@Bean
 	public WebMvcConfigurer corsConfigurer() {
 		return new WebMvcConfigurer() {
@@ -80,5 +76,4 @@ public class WebSecurityConfig {
 			}
 		};
 	}
-
 }

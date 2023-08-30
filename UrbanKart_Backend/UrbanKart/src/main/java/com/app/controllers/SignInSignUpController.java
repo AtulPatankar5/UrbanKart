@@ -45,8 +45,7 @@ public class SignInSignUpController {
 	@Autowired
 	private ModelMapper mapper;
 
-	// add a method to authenticate user . In case of success --send back token ,
-	// o.w send back err mesg
+	// add a method to authenticate user . In case of success --send back token , o.w send back err mesg
 	@PostMapping("/signin")
 	public ResponseEntity<?> validateUserCreateToken(@RequestBody @Valid AuthRequest request) {
 		// store incoming user details(not yet validated) into Authentication object
@@ -54,23 +53,14 @@ public class SignInSignUpController {
 		UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(request.getEmail(),
 				request.getPassword());
 		log.info("auth token " + authToken);
-		// try {
-		// authenticate the credentials
 		Authentication authentication = manager.authenticate(authToken);
 		log.info("auth token again " + authentication.getPrincipal().getClass());
 		CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
 		Users user = userDetails.getUser();
 		AuthResp resp = mapper.map(user, AuthResp.class);
 		resp.setToken(utils.generateJwtToken(authentication));
-		// => auth succcess
 		return ResponseEntity.ok(resp);
-		// return ResponseEntity.ok(new AuthResp("Auth successful!",
-		// utils.generateJwtToken(authenticatedDetails)));
-//		} catch (BadCredentialsException e) { // replaced  by a method in global exc handler
-//			// send back err resp code
-//			System.out.println("err " + e);
-//			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
-//		}
+
 	}
 
 	// add request handling method for user registration

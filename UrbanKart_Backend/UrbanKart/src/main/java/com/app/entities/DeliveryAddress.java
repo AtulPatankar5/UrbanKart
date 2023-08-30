@@ -15,6 +15,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name="delivery_address")
 public class DeliveryAddress extends BaseEntity{
+	
 	@Column(length = 50,nullable = false)
 	@NotBlank(message = "Address cannot be Blank")
 	private String adressLine1;
@@ -33,11 +34,7 @@ public class DeliveryAddress extends BaseEntity{
 	@Column(length = 50,nullable = false)
 	@Size(min=6,max=8)
 	private String zipCode;
-//	@OneToOne
-//	@JoinColumn(name="order_id")
-//	@JsonIgnore
-//	private Orders orderInfo;
-	
+
 	public DeliveryAddress() {
 		super();
 		System.out.println("in ctor "+getClass().getName());

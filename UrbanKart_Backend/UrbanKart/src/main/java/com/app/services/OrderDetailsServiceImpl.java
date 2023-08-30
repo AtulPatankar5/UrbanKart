@@ -14,10 +14,9 @@ public class OrderDetailsServiceImpl implements OrderDetailsService {
 
 	@Autowired
 	private OrderDetailsRepository detailsRepository;
-	
+
 	@Override
 	public OrderDetails saveOrderDetails(OrderDetails orderDetails) {
 		return detailsRepository.save(orderDetails);
 	}
-
 }

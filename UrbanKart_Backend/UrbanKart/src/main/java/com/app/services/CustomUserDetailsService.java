@@ -20,8 +20,6 @@ public class CustomUserDetailsService implements UserDetailsService {
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 		Users user = userRepo.findByEmail(email)
 				.orElseThrow(() -> new UsernameNotFoundException("Invalid Email ID"));
-		// use email valid
 		return new CustomUserDetails(user);
 	}
-
 }

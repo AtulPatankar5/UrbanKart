@@ -28,21 +28,17 @@ public class OrderDetails extends BaseEntity{
 	@ManyToOne
 	@JoinColumn(name="order_id")
 	@JsonIgnore
-	private Orders orderId;
+	private Orders orderId;	
 	
 	@OneToOne
 	@JoinColumn(name="product_id")
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Products productId;
-	
-	
-	
+		
 	public OrderDetails() {
 		super();
 		System.out.println("in ctor"+getClass().getName());
 	}
-
-
 
 	public OrderDetails(Integer quantity, Double totalPrice, Orders orderId, Products productId) {
 		super();

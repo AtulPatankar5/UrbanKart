@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import com.app.entities.Status;
 
 public class OrdersRespDTO {
+	
 	private LocalDate orderDate;
 	private LocalDate deliveryDate;
 	private Status status;
@@ -12,7 +13,7 @@ public class OrdersRespDTO {
 	private double shippingPrice;
 	private Long userOrdered;
 	private Long address;
-	
+
 	public OrdersRespDTO() {
 		super();
 	}
@@ -84,9 +85,5 @@ public class OrdersRespDTO {
 	public void setAddress(Long address) {
 		this.address = address;
 	}
-	
-	
-	
 
-	
 }

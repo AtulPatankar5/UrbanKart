@@ -46,17 +46,13 @@ public class OrderServiceImpl implements OrderService {
 	@Autowired
 	private CartService cartService;
 
-
-
 	@Override
 	public OrdersRespDTO placeOrder(Long userId,DeliveryAddressDTO address) {
-
 		DeliveryAddress trueAddress=new DeliveryAddress(address.getAddressLine1(),address.getAddressLine2(),address.getCity(),address.getState(),address.getZipCode());
 		DeliveryAddress addedAddress=addressRepository.save(trueAddress);
 		Users user=userRepository.findById(userId).orElseThrow(()->new ElementNotFoundException("User", "404", "Not Found1231321231231"));
 		Orders order=new Orders( LocalDate.now(),LocalDate.of(2024, 12, 12), Status.PLACED, 0, 40 , user, addedAddress);
 		Orders neworder=orderRepository.save(order);
-//		addedAddress.setOrderInfo(neworder);
 		Carts cart=user.getCart();
 		Set<CartItems> cartItems=user.getCart().getCartItems();
 		cartItems.forEach(x->{
@@ -72,14 +68,8 @@ public class OrderServiceImpl implements OrderService {
 		neworder.setTotalPrice(cart.getTotalPrice()+neworder.getShippingPrice());
 		neworder.setStatus(Status.PLACED);
 		cartService.emptyTheCart(user.getId());
-
-
-
-
 		return  new OrdersRespDTO(neworder.getOrderDate(), neworder.getDeliveryDate(), neworder.getStatus(), neworder.getTotalPrice(), neworder.getShippingPrice(), user.getId(), addedAddress.getId());
 	}
-
-
 
 	@Override
 	public List<Orders> getAllOrders() {
@@ -92,8 +82,6 @@ public class OrderServiceImpl implements OrderService {
 		});
 		return list;
 	}
-
-
 
 	@Override
 	public List<Orders> getMyOrders(Long Id) {
@@ -116,16 +104,12 @@ public class OrderServiceImpl implements OrderService {
 		orderRepository.deleteById(orderId);	
 	}
 
-
-
 	@Override
 	public void deleteOrders(Long userId) {
 		Users user=userRepository.findById(userId).orElseThrow(()->new ElementNotFoundException("User", "404", "Not Found"));
 		orderRepository.deleteByuserOrdered(user);
 
 	}
-
-
 
 	@Override
 	public void cancelOrder(Long orderId) {
@@ -144,5 +128,4 @@ public class OrderServiceImpl implements OrderService {
 		order.setStatus(Status.valueOf(status));
 		order.setDeliveryDate(deliveryDate);
 	}
-
 }

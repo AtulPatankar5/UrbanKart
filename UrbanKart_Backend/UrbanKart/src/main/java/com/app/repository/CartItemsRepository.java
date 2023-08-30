@@ -9,11 +9,7 @@ import com.app.entities.Carts;
 import com.app.entities.Products;
 
 public interface CartItemsRepository extends JpaRepository<CartItems,Long> {
-	
-//	@Modifying
-//	@Query("delete CartItems ci where ci.cartId=?1")
-//	void deleteByCartId(Carts cartId);
-	
+		
 	Long deleteByCartId(Carts cartId);
 	
 	Long deleteByProductId(Products product);

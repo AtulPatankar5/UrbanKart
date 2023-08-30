@@ -3,7 +3,7 @@ package com.app.dto;
 import com.app.entities.DeliveryAddress;
 
 public class OrderDTO {
-	
+
 	private DeliveryAddress address;
 
 	public OrderDTO() {
@@ -22,7 +22,5 @@ public class OrderDTO {
 	public void setAddress(DeliveryAddress address) {
 		this.address = address;
 	}
-	
-	
 
 }

@@ -5,15 +5,11 @@ import org.springframework.stereotype.Component;
 @SuppressWarnings("serial")
 @Component
 public class ElementAlreadyExistsException extends RuntimeException {
-	
+
 	private static final long serialVersionUID = 1L;
 	private String elementName;
 	private String errorCode;
 	private String errorMessage;
-	
-//	public UserAlreadyExistsException(String mesg) {
-//		super(mesg);
-//	}
 
 	public String getErrorCode() {
 		return errorCode;
@@ -45,7 +41,7 @@ public class ElementAlreadyExistsException extends RuntimeException {
 
 	public ElementAlreadyExistsException(String name, String errorCode, String errorMessage) {
 		super();
-		this.elementName=name;
+		this.elementName = name;
 		this.errorCode = errorCode;
 		this.errorMessage = errorMessage;
 	}
@@ -53,5 +49,5 @@ public class ElementAlreadyExistsException extends RuntimeException {
 	public ElementAlreadyExistsException() {
 		super();
 	}
-	
+
 }

@@ -31,6 +31,7 @@ public class JwtUtils {
 
 	@Value("${EXP_TIMEOUT}")
 	private int jwtExpirationMs;
+	
 	private Key key;
 
 	@PostConstruct
@@ -38,56 +39,41 @@ public class JwtUtils {
 		key = Keys.hmacShaKeyFor(jwtSecret.getBytes(/* StandardCharsets.UTF_8 */));
 	}
 
-	// will be invoked by REST Controller(authentication controller) , upon
-	// successful authentication
+	// will be invoked by REST Controller(authentication controller) , upon successful authentication
 	public String generateJwtToken(Authentication authentication) {
-//		Key key = Keys.hmacShaKeyFor(jwtSecret.getBytes(StandardCharsets.UTF_8));
 		log.info("generate jwt token " + authentication);
 		CustomUserDetails userPrincipal = (CustomUserDetails) authentication.getPrincipal();
-//JWT : userName,issued at ,exp date,digital signature(does not typically contain password , can contain authorities
+		//JWT : userName,issued at ,exp date,digital signature(does not typically contain password , can contain authorities
 		return Jwts.builder() // JWTs : a Factory class , used to create JWT tokens
 				.setSubject((userPrincipal.getUsername())) // setting subject of the token(typically user name) :sets
 															// subject claim part of the token
-			//	.claim("roles", userPrincipal.getAuthorities())
-				.setIssuedAt(new Date())// Sets the JWT Claims iat
-																						// (issued at) value of
-																						// current date
+			
+				.setIssuedAt(new Date())// Sets the JWT Claims (issued at) value of current date
 				.setExpiration(new Date((new Date()).getTime() + jwtExpirationMs))// Sets the JWT Claims exp
 																					// (expiration) value.
 				.signWith(key, SignatureAlgorithm.HS512) // Signs the constructed JWT using the specified
 															// algorithm with the specified key, producing a
 															// JWS(Json web signature=signed JWT)
-
 				// Using token signing algo : HMAC using SHA-512
 				.compact();// Actually builds the JWT and serializes it to a compact, URL-safe string
 	}
 
 	// this method will be invoked by our custom filter
 	public String getUserNameFromJwtToken(String token) {
-//		Key key = Keys.hmacShaKeyFor(jwtSecret.getBytes(StandardCharsets.UTF_8));
 		return Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token).getBody().getSubject();
 	}
 
 	// this method will be invoked by our custom filter
-	// @SuppressWarnings("unchecked")
 	public List<GrantedAuthority> getAuthoritiesFromJwtToken(String token) {
-//		Key key = Keys.hmacShaKeyFor(jwtSecret.getBytes(StandardCharsets.UTF_8));
-
 		Claims claims = Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token).getBody();
-
 		return Arrays.stream(claims.get("roles").toString().split(",")).map(s -> new SimpleGrantedAuthority(s))
 				.collect(Collectors.toList());
-		// Object o =
-		// Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token).getBody().get("authorities");
-		// System.out.println("granted auths " + o.getClass() + " " + o);
 
 	}
 
 	// this method will be invoked by our custom filter
 	public boolean validateJwtToken(String authToken) {
-//		Key key = Keys.hmacShaKeyFor(jwtSecret.getBytes(StandardCharsets.UTF_8));
 		try {
-
 			Jwts.parserBuilder().setSigningKey(key).build().
 			// Sets the signing key used to verify JWT digital signature.
 					parseClaimsJws(authToken);// Parses the signed JWT returns the resulting Jws<Claims> instance
@@ -96,7 +82,6 @@ public class JwtUtils {
 		} catch (Exception e) {
 			log.error("Invalid JWT : " + e.getMessage());
 		}
-
 		return false;
 	}
 }

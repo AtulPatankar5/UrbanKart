@@ -17,44 +17,33 @@ import com.app.repository.ProductRepository;
 @Service
 @Transactional
 public class CategoryServiceImpl implements CategoryService {
-	
+
 	@Autowired
 	private CategoryRepository categoryRepository;
-	
-	@Autowired 
+
+	@Autowired
 	private ProductRepository productRepository;
-	
+
 	@Override
 	public Categories saveCategory(CatagoryDTO Category) {
-		
-		Categories cat=new Categories();
+
+		Categories cat = new Categories();
 		BeanUtils.copyProperties(Category, cat);
 		return categoryRepository.save(cat);
 	}
-	
+
 	@Override
 	public Optional<Categories> getCategory(Long CatId) {
-		
 		return categoryRepository.findById(CatId);
 	}
 
 	@Override
 	public List<Categories> getAllCategories() {
-		
 		return categoryRepository.findAll();
 	}
-	
-	
 
 	@Override
 	public void deleteCategory(Long categoryId) {
-//		Optional<Categories> category=getCategory(categoryId);
 		categoryRepository.deleteById(categoryId);
-//		productRepository.deleteByCategoryId(category.get());
-		
 	}
-	
-	
-	
-	
 }
