@@ -12,9 +12,6 @@ function HomePageAdmin() {
   const [loading, setLoading] = useState(false);
   const [categorie, setCategorie] = useState([]);
 
-  
-
-
   const BASE_URL="http://localhost:8080/products/";
    //Fetched Data From Backend
    useEffect(() => {
@@ -114,11 +111,9 @@ function HomePageAdmin() {
 
   const filterProduct = (id) => {
 
-    // const updatedList = data.filter((item) => item.category === cat);
     ProductService.getProductsByCategory(id).then((response)=>{
       setFilter(response.data)
     });
-    // setFilter(updatedList);
   }
 
 

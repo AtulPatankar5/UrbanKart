@@ -33,21 +33,6 @@ class CartService {
     emptyMyCart(id) {
       return axios.delete(API_URL+ `/${id}`,{ headers: authHeader() });
     }
-  
-  
-    // getAllCategories() {
-    //   return axios.get(BASE_API_URL + '/category');
-    // }
-  
-    // getProductsByCategory(id) {
-    //   return axios.get(BASE_API_URL + `/products/category/${id}`);
-    // }
-  
-    // getProductImage(id) {
-    //   return axios.get(`http://localhost:8080/products/${id}/image`, {
-    //     responseType: 'blob',
-    //   }); //.then(res=>{setPic(URL.createObjectURL(res.data));//console.log(res.data)
-    // }
   }
   
   export default new CartService();

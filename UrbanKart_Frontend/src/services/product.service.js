@@ -51,7 +51,7 @@ class ProductService {
   getProductImage(id) {
     return axios.get(`http://localhost:8080/products/${id}/image`, {
       responseType: 'blob',
-    }); //.then(res=>{setPic(URL.createObjectURL(res.data));//console.log(res.data)
+    }); 
   }
 }
 

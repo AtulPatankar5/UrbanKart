@@ -24,14 +24,6 @@ const MyOrders = () => {
   }, [])
 
   const handleStatusChange=(e)=>{
-        // const{name , value}= e.target
-        // setOrderStat(prevStat =>{
-        //   return {
-        //     ...prevStat,
-        //     [name]:value
-        //   }
-        // })
-        // console.log(orderStat)
         setOrderId(e.target.value);
 
   }
@@ -58,23 +50,8 @@ const MyOrders = () => {
       toast.error(error.response.data ,{autoClose: 1500});
      })
   }
-
-  // const cancelOrder =(id)=>{
-  //   console.log("In Cancel  "+id);
-  //   // if(window.confirm("Confirm Canceled")){
-      // UserOrderService.cancelMyOrder(id).then(()=>{
-      //   alert("Order Canceled");
-      //   // setReRender(true);
-      //  })
-    
-    
-  // }
-
-
-
   return (
     <>
-    {/* Code For Updating The Order Status */}
      <div className="form-control">
       <button  className="btn btn-outline-dark m-2" onClick={()=>{setModel(true)}}> Cancel Order</button>
      <small>please copy Order Id First</small>

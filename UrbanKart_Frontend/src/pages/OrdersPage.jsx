@@ -157,18 +157,6 @@ const OrdersPage = () => {
           </tr>
         </thead>
         <tbody>
-
-          {/* // {
-//     "orderDate": "2023-03-12",
-//     "deliveryDate": "2024-12-12",
-//     "status": "PLACED",
-//     "totalPrice": 409.0,
-//     "shippingPrice": 40.0,
-//     "userOrdered": 3,
-//     "address": 2
-// } */}
-
-
           {
             orders.map((order) => {
               return (

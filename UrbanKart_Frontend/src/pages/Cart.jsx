@@ -46,9 +46,7 @@ const Cart = () => {
   };
 
   const addItem = (product) => {
-    // console.log("In add");
-
-    const item1=new CartItem(1,currentUser.id,product.productId.id);
+  const item1=new CartItem(1,currentUser.id,product.productId.id);
     CartService.addToCart(item1).then((resp)=>{
       cart.cartItems.map((item)=>{
         if(item.productId.id===product.productId.id){
@@ -56,7 +54,7 @@ const Cart = () => {
           item.totalPrice=item.totalPrice+item.productId.price;
         }
       })
-      // console.log(cart.cartItems);
+
       const tp=cart.totalPrice+product.productId.price;
 
       setCart(prevState=>{
@@ -67,15 +65,13 @@ const Cart = () => {
           ["totalPrice"]: tp
       }
       })
-      // console.log("In add"+cart.totalPrice)
-    // < EmptyCart />
-
     });
 
 
 
     dispatch(addCart(product));
   };
+
   const removeItem = (product) => {
     if(product.quantity==1){
       CartService.deleteItem(product.id).then((resp)=>{
@@ -132,13 +128,6 @@ const Cart = () => {
     let subtotal = 0;
     let shipping = 200;
     let totalItems = 0;
-    // state.map((item) => {
-    //   return (subtotal += item.price * item.qty);
-    // });
-
-    // state.map((item) => {
-    //   return (totalItems += item.qty);
-    // });
     return (
       <>
         <section className="h-100 gradient-custom">
@@ -152,68 +141,6 @@ const Cart = () => {
                   <div className="card-body">
                     {cart.cartItems.map((item) => {
                       return (
-                        // <div key={item.id}>
-                        //   <div className="row d-flex align-items-center">
-                        //     <div className="col-lg-3 col-md-12">
-                        //       <div
-                        //         className="bg-image rounded"
-                        //         data-mdb-ripple-color="light"
-                        //       >
-                        //         <img
-                        //           src={BASE_URL + item.productId.id + '/image'}//src={item.image}
-                        //           // className="w-100"
-                        //           alt={item.productName}
-                        //           width={100}
-                        //           height={75}
-                        //         />
-                        //       </div>
-                        //     </div>
-
-                        //     <div className="col-lg-5 col-md-6">
-                        //       <p>
-                        //         <strong>{item.productName}</strong>
-                        //       </p>
-                        //       {/* <p>Color: blue</p>
-                        //       <p>Size: M</p> */}
-                        //     </div>
-
-                        //     <div className="col-lg-4 col-md-6">
-                        //       <div
-                        //         className="d-flex mb-4"
-                        //         style={{ maxWidth: "300px" }}
-                        //       >
-                        //         <button
-                        //           className="btn px-3"
-                        //           onClick={() => {
-                        //             removeItem(item);
-                        //           }}
-                        //         >
-                        //           <i className="fas fa-minus"></i>
-                        //         </button>
-
-                        //         <p className="mx-5">{item.quantity}</p>
-
-                        //         <button
-                        //           className="btn px-3"
-                        //           onClick={() => {
-                        //             addItem(item);
-                        //           }}
-                        //         >
-                        //           <i className="fas fa-plus"></i>
-                        //         </button>
-                        //       </div>
-
-                        //       {/* <p className="text-start text-md-center">
-                        //         <strong>
-                        //           <span className="text-muted">{item.qty}</span>{" "}
-                        //           x ${item.price}
-                        //         </strong>
-                        //       </p> */}
-                        //     </div>
-                        //   </div>
-
-                        //   <hr className="my-4" />
-                        // </div>
                         <div key={item.id}>
   <div className="row d-flex align-items-center">
     <div className="col-lg-2 col-md-12">
@@ -280,9 +207,6 @@ const Cart = () => {
                           </li>)
                         })
                       }
-                      {/* <li className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
-                        Products ({cart.cartItems.length})<span>Rs {cart.totalPrice}</span>
-                      </li> */}
                       <li className="list-group-item d-flex justify-content-between align-items-center px-0">
                         Shipping
                         <span>Rs {shipping}</span>
@@ -291,7 +215,6 @@ const Cart = () => {
                         <div>
                           <strong>Total amount</strong>
                         </div>
-                        {/* {console.log(cart)} */}
                         <span>
                           <strong>Rs {parseInt(cart.totalPrice) + shipping}</strong>
                         </span>

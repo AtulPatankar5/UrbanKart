@@ -23,7 +23,6 @@ root.render(
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/product" element={<Products />} />
-     
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/cart" element={<Cart />} />
@@ -35,12 +34,10 @@ root.render(
         <Route path="/addcategory" element={<AddCategory />} />
         <Route path="/myorders" element={<MyOrders />} />
         <Route path="/addproduct" element={<AddProduct />} />
-
         <Route path="/updateproduct" element={<UpdateProduct />} />
         <Route path="/users" element={< AllUsersPage />}/>
         <Route path="/updateform" element={< UpdateFormAdmin />}/>
         <Route path="/placedorders" element={< OrdersPage />}/>
-
       </Routes>
     </Provider>
   </BrowserRouter>

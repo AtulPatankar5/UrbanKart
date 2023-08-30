@@ -35,20 +35,12 @@ const AddCategory = () => {
 
    }
   return (
-    <>
-           
+    <>     
             <div className="container my-3 py-3 bg-dark">
                 <h1 className="text-center text-light">Add Category</h1>
                 <hr />
                 <div class="row my-4 h-50">
                     <div className="col-md-7 col-lg-7 col-sm-5 mx-auto">
-                   
-
-                        {/* {errorMessage &&
-                        <div className="alert alert-danger">
-                            {errorMessage}
-                        </div>
-                        } */}
                         <form onSubmit={(e) => handleAddCategory(e)}>
                             <div class="form my-3">
                                 <label for="CName" class="text-light">Category Name </label>
@@ -77,23 +69,7 @@ const AddCategory = () => {
                                  placeholder="Enter Description Here"
                                  onChange={handleChange}>
                                 </textarea>
-                                {/* <input
-                                    type="text"
-                                    class="form-control"
-                                    id="LName"
-                                    name="lastName"
-                                    value={user.lastName}
-                                    placeholder="Enter Last Name"
-                                    minLength={4}
-                                    maxLength={20}
-                                    onChange={handleChange}
-                                    required
-                                /> */}
-                           
                             </div>
-
-
-                            
                             <div className="text-center">
                                 <button class="my-2 mx-auto btn btn-dark" type="submit" >
                                   Add Category

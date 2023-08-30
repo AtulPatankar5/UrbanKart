@@ -68,9 +68,9 @@ const Navbar = () => {
 
                          }
 
-                        {/* <li className="nav-item">
+                        <li className="nav-item">
                             <NavLink className="nav-link" to="/about">About</NavLink>
-                        </li> */}
+                        </li>
                         <li className="nav-item">
                             <NavLink className="nav-link" to="/contact">Contact</NavLink>
                         </li>
@@ -118,10 +118,10 @@ const Navbar = () => {
                                   <NavLink to="/myorders" className="btn btn-outline-light m-2"><i className="fa fa-cart-shopping mr-1"></i> My Orders </NavLink>
                                 </>     
                          }
-                        {/* { user &&    <>Welcome {user .firstName}</>  }  */}
+                      
                         {user && (
-  <span className="text-light">Welcome {user.firstName}</span>
-)}
+                    <span className="text-light">Welcome {user.firstName}</span>
+                    )}
 
                     </div>
                 </div>

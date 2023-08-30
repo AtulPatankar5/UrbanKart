@@ -13,8 +13,6 @@ const AddCategory = () => {
     const [product, setProduct] = useState(new Product('', '', '', '', '', ''));
     const [categoryList, setCategoryList] = useState([]);
     const [image, setImage] = useState(null)
-    // const navigate = useNavigate();
-
     const handleChange = (e) => {
         const { name, value } = e.target;
         setProduct(prevState => {
@@ -35,8 +33,7 @@ const AddCategory = () => {
 
     const handleAddProduct = (e) => {
         e.preventDefault();
-        // console.log(product.categoryId)
-        productService.saveProduct(product).then((resp) => {
+          productService.saveProduct(product).then((resp) => {
             console.log("Product added Success");
             productService.uploadProductImage(image, resp.data.id).then(() => {
                 toast.success("Product Added" ,{autoClose: 1500});
@@ -157,7 +154,6 @@ const AddCategory = () => {
                                     class="form-control"
                                     name="image"
                                     id="image"
-                                    // value={product.stock}
                                     placeholder="Enter image Here"
                                     onChange={handleImageChange}
                                     required

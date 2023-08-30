@@ -31,18 +31,15 @@ const Login = () => {
     //mounted
     useEffect(() => {
         if (currentUser?.id) {
-            //navigate
             navigate('/profile');
         }
     }, []);
 
-    //<input name="x" value="y" onChange=(event) => handleChange(event)>
+ 
     const handleChange = (e) => {
         const {name, value} = e.target;
 
         setUser((prevState => {
-         //   console.log("in change "+name+" "+value);
-            //e.g: prevState ({user: x, pass: x}) + newKeyValue ({user: xy}) => ({user: xy, pass: x})
             return {
                 ...prevState,
                 [name]: value
@@ -54,7 +51,6 @@ const Login = () => {
       e.preventDefault();
     console.log("in Handle Login")
       setSubmitted(true);
-   //     console.log("in handle login "+user.email+" "+user.password);
       if (!user.email || !user.password) {
         console.log(user.email +" " + user.password)
           return;
@@ -83,66 +79,7 @@ const Login = () => {
 
   return (
     <>
-      {/* <div className="container my-3 py-3">
-        <h1 className="text-center">Login</h1>
-        <hr />
-        <div class="row my-4 h-100">
-          <div className="col-md-4 col-lg-4 col-sm-8 mx-auto">
-        
-
-            {errorMessage &&
-            <div className="alert alert-danger">
-                {errorMessage}
-            </div>
-            }
-            <form
-                onSubmit={(e) => handleLogin(e)}>
-              <div class="my-3">
-                <label for="display-4">Email address</label>
-                <input
-                  type="email"
-                  name="email"
-                  class="form-control"
-                  id="floatingInput"
-                  placeholder="name@example.com"
-                  value={user.email}
-                  onChange={(e) => handleChange(e)}
-                  required
-                />
-              </div>
-              <div className="invalid-feedback">
-                  Email is required.
-              </div>
-              <div class="my-3">
-                <label for="floatingPassword display-4">Password</label>
-                <input
-                  type="password"
-                  name="password"
-                  class="form-control"
-                  id="floatingPassword"
-                  placeholder="Password"
-                  value={user.password}
-                  onChange={(e) => handleChange(e)}
-                  required
-                />
-              </div>
-              <div className="my-3">
-                <p>New Here? <Link to="/register" className="text-decoration-underline text-info">Register</Link> </p>
-              </div>
-              <div className="text-center">
-                <button class="my-2 mx-auto btn btn-dark" type="submit">
-                  Login
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div> */}
-
-
-<div className="container my-3 py-3">
-{/* style={{backgroundColor: "#D3D3D3"}}  */}
-{/* #f2f2f2  #FFEEF2*/}
+     <div className="container my-3 py-3">
   <h1 className="text-center" style={{color: "black", textDecoration: "underline"}}>Login</h1>
   <hr />
   <div class="row my-4 h-100">

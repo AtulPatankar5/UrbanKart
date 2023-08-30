@@ -135,28 +135,3 @@ const Billing = () => {
 }
 
 export default Billing
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const handleAddress=(e)=>{
-
-//     e.preventDefault();
-
-//     OrderService.saveOrder(currentUser.id,address).then((resp)=>{
-//       console.log("Birth Of Order");
-//       alert("Order Placed");
-//       }).catch((error)=>{
-//       console.log(error)
-//      }); 
-//   }

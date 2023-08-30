@@ -71,11 +71,6 @@ function UpdateFormAdmin(props) {
                 <hr />
                 <div class="row my-4 h-100">
                     <div className="col-md-4 col-lg-4 col-sm-8 mx-auto">
-                        {/* {errorMessage &&
-                        <div className="alert alert-danger">
-                            {errorMessage}
-                        </div>
-                        } */}
                         <form onSubmit={handleAddProduct}>
                             <div class="form my-3">
                                 <label for="PName">Product Name </label>
@@ -162,9 +157,6 @@ function UpdateFormAdmin(props) {
                                 </button>
                             </div>
                             <div className="text-center">
-                                {/* <button class="my-2 mx-auto btn btn-dark" type="submit" >
-                                    cancel
-                                </button> */}
                                 <Link to="/updateproduct" state={product.id} class="my-2 mx-auto btn btn-dark">Cancel</Link>
                             </div>
                         </form>

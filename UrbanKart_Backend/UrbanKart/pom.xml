@@ -102,22 +102,7 @@
 			<artifactId>modelmapper</artifactId>
 			<version>3.1.0</version>
 		</dependency>
-		
 
-		<!-- <dependency>
-		<groupId>com.microsoft.azure</groupId>
-		<artifactId>azure-spring-boot-bom</artifactId>
-		<version>${azure.version}</version>
-		<type>pom</type>
-		</dependency> -->
-		
-		
-		
-		<!-- trying this for proxies did not work -->
-		<!-- <dependency> 
-				<groupId>com.fasterxml.jackson.datatype</groupId> 
-				<artifactId>jackson-datatype-hibernate5</artifactId> 
-			</dependency> -->
 	</dependencies>
 
 	<build>
