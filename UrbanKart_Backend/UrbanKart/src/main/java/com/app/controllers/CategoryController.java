@@ -19,7 +19,7 @@ public class CategoryController {
 	@Autowired
 	private CategoryService categoryService;
 	
-	@PostMapping (consumes = "application/json")//get data in JSON Format
+	@PostMapping (consumes = "application/json")
     public ResponseEntity<?> saveCategory(@RequestBody CatagoryDTO category)
     {
 		System.out.println("In Category");
@@ -31,7 +31,7 @@ public class CategoryController {
     {
         return new ResponseEntity<>(categoryService.getAllCategories(), HttpStatus.CREATED);
     }
-	
+//	
 //	@DeleteMapping("/{categoryId}") 
 //    public ResponseEntity<?> deleteCategory(@PathVariable Long categoryId)
 //    {

@@ -29,7 +29,7 @@ const Navbar = () => {
 
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light py-3 sticky-top">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark py-3 sticky-top"> {/*darken the nav bar*/} 
             <ToastContainer />
             <div className="container">
             { ! (user?.role===Role.ADMIN) ?
@@ -78,17 +78,17 @@ const Navbar = () => {
                     <div className="buttons text-center">
                         {
                             user ? <></>
-                                : <NavLink to="/register" className="btn btn-outline-dark m-2"><i className="fa fa-user-plus mr-1"></i> Register</NavLink>
+                                : <NavLink to="/register" className="btn btn-outline-light m-2"><i className="fa fa-user-plus mr-1"></i> Register</NavLink>
                         }
 
                          {
                             (user?.role === Role.ADMIN) ?
 
                                <span>
-                                <NavLink to="/users" className="btn btn-outline-dark m-2"><i class="fa fa-user" aria-hidden="true"></i> Users</NavLink>
-                                <NavLink to="/addcategory" className="btn btn-outline-dark m-2"><i className="fa fa-solid fa-plus"></i>Add Category</NavLink>
-                                <NavLink to="/addproduct" className="btn btn-outline-dark m-2"><i className="fa fa-solid fa-plus"></i> Add Product</NavLink>
-                                 <NavLink to="/placedorders" className="btn btn-outline-dark m-2"><i class="fa-solid fa-pen-to-square"></i> All Orders Details</NavLink> 
+                                <NavLink to="/users" className="btn btn-outline-light m-2"><i class="fa fa-user" aria-hidden="true"></i> Users</NavLink>
+                                <NavLink to="/addcategory" className="btn btn-outline-light m-2"><i className="fa fa-solid fa-plus"></i>Add Category</NavLink>
+                                <NavLink to="/addproduct" className="btn btn-outline-light m-2"><i className="fa fa-solid fa-plus"></i> Add Product</NavLink>
+                                 <NavLink to="/placedorders" className="btn btn-outline-light m-2"><i class="fa-solid fa-pen-to-square"></i> All Orders Details</NavLink> 
                                </span>
 
 
@@ -102,8 +102,8 @@ const Navbar = () => {
                          }
 
                         {
-                            user ? <NavLink to="/login" className="btn btn-outline-dark m-2" onClick={logout}><i className="fa fa-sign-in-alt mr-1"  ></i> Logout</NavLink>
-                                : <NavLink to="/login" className="btn btn-outline-dark m-2"><i className="fa fa-sign-in-alt mr-1"></i> Login</NavLink>
+                            user ? <NavLink to="/login" className="btn btn-outline-light m-2" onClick={logout}><i className="fa fa-sign-in-alt mr-1"  ></i> Logout</NavLink>
+                                : <NavLink to="/login" className="btn btn-outline-light m-2"><i className="fa fa-sign-in-alt mr-1"></i> Login</NavLink>
 
                         }
 
@@ -114,18 +114,14 @@ const Navbar = () => {
                                 </>
                                 :
                                 <>
-                                  <NavLink to="/cart" className="btn btn-outline-dark m-2"><i className="fa fa-cart-shopping mr-1"></i> Cart </NavLink>
-                                  <NavLink to="/myorders" className="btn btn-outline-dark m-2"><i className="fa fa-cart-shopping mr-1"></i> My Orders </NavLink>
+                                  <NavLink to="/cart" className="btn btn-outline-light m-2"><i className="fa fa-cart-shopping mr-1"></i> Cart </NavLink>
+                                  <NavLink to="/myorders" className="btn btn-outline-light m-2"><i className="fa fa-cart-shopping mr-1"></i> My Orders </NavLink>
                                 </>     
                          }
-
-
-                      
-                        { user &&    <>Welcome {user .firstName}</> } 
-                     
-
-
-
+                        {/* { user &&    <>Welcome {user .firstName}</>  }  */}
+                        {user && (
+  <span className="text-light">Welcome {user.firstName}</span>
+)}
 
                     </div>
                 </div>

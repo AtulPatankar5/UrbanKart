@@ -5,7 +5,7 @@ function Home() {
     <>
      
       <Main />
-      <Product />
+      {/* <Product /> */}
       <Footer />
     </>
   )

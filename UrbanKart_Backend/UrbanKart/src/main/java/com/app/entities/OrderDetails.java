@@ -35,10 +35,14 @@ public class OrderDetails extends BaseEntity{
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Products productId;
 	
+	
+	
 	public OrderDetails() {
 		super();
 		System.out.println("in ctor"+getClass().getName());
 	}
+
+
 
 	public OrderDetails(Integer quantity, Double totalPrice, Orders orderId, Products productId) {
 		super();
@@ -66,30 +70,45 @@ public class OrderDetails extends BaseEntity{
 		return totalPrice;
 	}
 
+
+
 	public void setTotalPrice(Double totalPrice) {
 		this.totalPrice = totalPrice;
 	}
+
+
 
 	public Orders getOrderId() {
 		return orderId;
 	}
 
+
+
 	public void setOrderId(Orders orderId) {
 		this.orderId = orderId;
 	}
+
+
 
 	public Products getProductId() {
 		return productId;
 	}
 
+
+
 	public void setProductId(Products productId) {
 		this.productId = productId;
 	}
+
+
 
 	@Override
 	public String toString() {
 		return "OrderDetails [quantity=" + quantity + ", totalPrice=" + totalPrice + ", orderId=" + orderId
 				+ ", productId=" + productId + ", getId()=" + getId() + "]";
 	}
+	
+	
+	
 
 }

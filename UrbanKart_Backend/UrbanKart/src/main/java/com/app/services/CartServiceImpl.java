@@ -45,29 +45,16 @@ public class CartServiceImpl implements CartService {
 
 	@Override
 	public void emptyTheCart(Long userId) {
-		Carts cart=repository.findById(userId).orElseThrow(()->new ElementNotFoundException("User", "404", "Not Found")).getCart();
-//		cart.getCartItems().forEach(x->{
-//		});		
+		Carts cart=repository.findById(userId).orElseThrow(()->new ElementNotFoundException("User", "404", "Not Found")).getCart();	
 		cart.emptyCartItems();
 		cart.setTotalItems(0);
 		cart.setTotalPrice(0);
 		cart.setUpdated(LocalDate.now());
-		cartItemsService.DeleteCartItemsFromCart(cart);		
+		
+		cartItemsService.DeleteCartItemsFromCart(cart);
+		
 	}
 
-//	@Override
-//	public List<CartItemRespDTO> getMyCart(Long userId) {
-//		
-//		Carts cart=repository.findById(userId).orElseThrow(()->new ElementNotFoundException("User", "404", "Not Found")).getCart();
-//		List<CartItemRespDTO> tempList = new ArrayList<CartItemRespDTO>();
-//		if(cart.getTotalItems()==0) {throw new ElementNotFoundException("Cart ", "404", " is Empty");}
-//		
-//		cart.getCartItems().forEach(x->{
-//			tempList.add(new CartItemRespDTO(x.getQuantity(), x.getTotalPrice(), x.getCartId().getId(), x.getProductId().getId()));
-//		});
-//		
-//		return tempList ;
-//	}
 	
 	@Override
 	public Carts getMyCart(Long userId) {
@@ -94,7 +81,11 @@ public class CartServiceImpl implements CartService {
 		cart.getCartItems().forEach(x->{
 		
 			tempList.add(new CartItemRespDTO(x.getQuantity(), x.getTotalPrice(), x.getCartId().getId(), x.getProductId().getId(),x.getProductId().getName()));
-		});	
+		});
+		
 		return tempList ;
-	}	
+	}
+	
+
+	
 }

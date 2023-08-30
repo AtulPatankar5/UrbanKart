@@ -96,12 +96,12 @@ const Products = () => {
   const ShowProducts = () => {
     return (
       <>
-        <div className="buttons text-center py-5">
-          <button className="btn btn-outline-dark btn-sm m-2" onClick={() => setFilter(data)}>All</button>
+        <div className="buttons text-center py-3" style={{backgroundColor:"#000000"}}>
+          <button className="btn btn-outline-light btn-lg m-2" style={{fontSize:"1.5rem"}} onClick={() => setFilter(data)}>All</button>
           {categorie.map((cat)=>{
             const name=cat.categoryName;
             console.log(BASE_URL + cat.id );
-            return <button className="btn btn-outline-dark btn-sm m-2" onClick={() => filterProduct(cat.id)}>{cat.categoryName}</button>
+            return <button className="btn btn-outline-light btn-lg m-2"  style={{fontSize:"1.5rem"}}  onClick={() => filterProduct(cat.id)}>{cat.categoryName}</button>
           })}
 
         </div>
@@ -149,8 +149,8 @@ const Products = () => {
       <div className="container my-3 py-3">
         <div className="row">
           <div className="col-12">
-            <h2 className="display-5 text-center">Latest Products</h2>
-            <hr />
+            {/* <h2 className="display-5 text-center">Latest Products</h2>
+            <hr /> */}
           </div>
         </div>
         <div className="row justify-content-center">

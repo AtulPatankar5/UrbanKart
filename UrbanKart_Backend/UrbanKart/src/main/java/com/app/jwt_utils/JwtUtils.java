@@ -5,13 +5,17 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
+
 import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Component;
+
 import com.app.services.CustomUserDetails;
+
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -25,9 +29,8 @@ public class JwtUtils {
 	@Value("${SECRET_KEY}")
 	private String jwtSecret;
 
-	@Value("${EXP_TIMEOUT}")// 24 hour 
+	@Value("${EXP_TIMEOUT}")
 	private int jwtExpirationMs;
-
 	private Key key;
 
 	@PostConstruct
@@ -37,19 +40,18 @@ public class JwtUtils {
 
 	// will be invoked by REST Controller(authentication controller) , upon
 	// successful authentication
-	public String generateJwtToken(Authentication authentication) {// happens after authentication 
-
+	public String generateJwtToken(Authentication authentication) {
+//		Key key = Keys.hmacShaKeyFor(jwtSecret.getBytes(StandardCharsets.UTF_8));
 		log.info("generate jwt token " + authentication);
 		CustomUserDetails userPrincipal = (CustomUserDetails) authentication.getPrincipal();
-
-		// JWT : userName,issued at ,exp date,digital signature(does not typically
-		// contain password , can contain authorities
+//JWT : userName,issued at ,exp date,digital signature(does not typically contain password , can contain authorities
 		return Jwts.builder() // JWTs : a Factory class , used to create JWT tokens
 				.setSubject((userPrincipal.getUsername())) // setting subject of the token(typically user name) :sets
 															// subject claim part of the token
+			//	.claim("roles", userPrincipal.getAuthorities())
 				.setIssuedAt(new Date())// Sets the JWT Claims iat
-										// (issued at) value of
-										// current date
+																						// (issued at) value of
+																						// current date
 				.setExpiration(new Date((new Date()).getTime() + jwtExpirationMs))// Sets the JWT Claims exp
 																					// (expiration) value.
 				.signWith(key, SignatureAlgorithm.HS512) // Signs the constructed JWT using the specified
@@ -62,20 +64,28 @@ public class JwtUtils {
 
 	// this method will be invoked by our custom filter
 	public String getUserNameFromJwtToken(String token) {
+//		Key key = Keys.hmacShaKeyFor(jwtSecret.getBytes(StandardCharsets.UTF_8));
 		return Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token).getBody().getSubject();
 	}
 
+	// this method will be invoked by our custom filter
+	// @SuppressWarnings("unchecked")
 	public List<GrantedAuthority> getAuthoritiesFromJwtToken(String token) {
+//		Key key = Keys.hmacShaKeyFor(jwtSecret.getBytes(StandardCharsets.UTF_8));
+
 		Claims claims = Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token).getBody();
 
 		return Arrays.stream(claims.get("roles").toString().split(",")).map(s -> new SimpleGrantedAuthority(s))
 				.collect(Collectors.toList());
+		// Object o =
+		// Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token).getBody().get("authorities");
+		// System.out.println("granted auths " + o.getClass() + " " + o);
 
 	}
 
 	// this method will be invoked by our custom filter
 	public boolean validateJwtToken(String authToken) {
-
+//		Key key = Keys.hmacShaKeyFor(jwtSecret.getBytes(StandardCharsets.UTF_8));
 		try {
 
 			Jwts.parserBuilder().setSigningKey(key).build().

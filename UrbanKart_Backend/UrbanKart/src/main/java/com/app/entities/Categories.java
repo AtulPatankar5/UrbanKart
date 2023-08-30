@@ -29,7 +29,9 @@ public class Categories extends BaseEntity{
 	@OneToMany(mappedBy = "categoryId", cascade = CascadeType.ALL, orphanRemoval = true)
 	@JsonIgnore
 	private Set<Products> productList = new HashSet<Products>();
-		
+	
+	
+	
 	public Categories() {
 		super();
 	}

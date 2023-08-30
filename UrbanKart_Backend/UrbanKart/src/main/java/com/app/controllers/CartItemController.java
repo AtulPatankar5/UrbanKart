@@ -40,11 +40,5 @@ public class CartItemController {
 	public ResponseEntity<String> updateItem(@PathVariable Long cartItemId) {
 		cartItemsService.updateItem(cartItemId);
 		return new ResponseEntity<String>("CartItem is Updated", HttpStatus.CREATED);
-	}
-	
-	
-	
-	
-
-	
+	}	
 }

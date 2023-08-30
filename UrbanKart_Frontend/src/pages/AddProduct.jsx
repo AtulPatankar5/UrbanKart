@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-// import { useNavigate } from "react-router-dom";
 import { Footer } from "../components";
 import {  useNavigate } from "react-router-dom";
 import Product from "../models/product";
@@ -11,7 +10,6 @@ import {  toast } from 'react-toastify';
 
 const AddCategory = () => {
     const navigate = useNavigate();
-
     const [product, setProduct] = useState(new Product('', '', '', '', '', ''));
     const [categoryList, setCategoryList] = useState([]);
     const [image, setImage] = useState(null)
@@ -57,21 +55,15 @@ const AddCategory = () => {
     return (
         <>
 
-            <div className="container my-3 py-3">
-                <h1 className="text-center">Add Product</h1>
+            <div className="container my-3 py-3 bg-dark">
+                <h1 className="text-center text-light" >Add Product</h1>
                 <hr />
                 <div class="row my-4 h-100">
                     <div className="col-md-4 col-lg-4 col-sm-8 mx-auto">
 
-
-                        {/* {errorMessage &&
-                        <div className="alert alert-danger">
-                            {errorMessage}
-                        </div>
-                        } */}
                         <form onSubmit={(e) => handleAddProduct(e)}>
                             <div class="form my-3">
-                                <label for="PName">Product Name </label>
+                                <label for="PName" class="text-light">Product Name </label>
                                 <input
                                     type="text"
                                     class="form-control"
@@ -87,7 +79,7 @@ const AddCategory = () => {
 
 
                             <div class="form my-3">
-                                <label for="price">Product price</label>
+                                <label for="price" class="text-light">Product price</label>
                                 <br />
                                 <input
                                     type="number"
@@ -104,7 +96,7 @@ const AddCategory = () => {
 
 
                             <div class="form my-3">
-                                <label for="description">Product Description </label>
+                                <label for="description" class="text-light"> Product Description </label>
                                 <textarea
                                     class="form-control"
                                     name="description"
@@ -118,7 +110,7 @@ const AddCategory = () => {
                             </div>
 
                             <div class="form my-3">
-                                <label for="stock">Product Stock</label>
+                                <label for="stock" class="text-light">Product Stock</label>
                                 <input
                                     type="number"
                                     class="form-control"
@@ -133,7 +125,7 @@ const AddCategory = () => {
                             </div>
 
                             <div class="form my-3">
-                                <label for="categoryId">Category</label>
+                                <label for="categoryId" class="text-light">Category</label>
                                 <select
                                     class="form-control"
                                     name="categoryId"
@@ -159,7 +151,7 @@ const AddCategory = () => {
                             </div>
 
                             <div class="form my-3">
-                                <label for="image">Product Image</label>
+                                <label for="image" class="text-light">Product Image</label>
                                 <input
                                     type="file"
                                     class="form-control"
@@ -175,7 +167,7 @@ const AddCategory = () => {
 
 
                             <div class="form my-3">
-                                <label for="expDate">Product expdate</label>
+                                <label for="expDate" class="text-light">Product expdate</label>
                                 <input
                                     type="date"
                                     class="form-control"

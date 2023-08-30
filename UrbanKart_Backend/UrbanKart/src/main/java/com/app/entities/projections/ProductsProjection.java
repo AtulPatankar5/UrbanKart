@@ -12,9 +12,6 @@ public class ProductsProjection {
 	private String imagePath;
 	private LocalDate expDate;
 
-	/*{"name":"Crocine","price":"12.0","description":"Fever Tablet","stock":"500","categoryId":"1","imagePath":"images/kiara.jpg"}*/
-	
-	
 	public ProductsProjection() {
 		super();
 		System.out.println("in ctor "+getClass().getName());
@@ -114,11 +111,4 @@ public class ProductsProjection {
 		this.expDate = expDate;
 	}
 	
-	
-
-	
-
-
-	
-
 }

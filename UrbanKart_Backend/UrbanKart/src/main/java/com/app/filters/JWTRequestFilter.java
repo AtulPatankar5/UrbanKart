@@ -22,10 +22,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Component
 public class JWTRequestFilter extends OncePerRequestFilter {
-	
 	@Autowired
 	private JwtUtils utils;
-		
 	@Autowired
 	private UserDetailsService userDetailsService;
 
@@ -45,14 +43,14 @@ public class JWTRequestFilter extends OncePerRequestFilter {
 				if (userName != null && SecurityContextHolder.getContext().getAuthentication() == null) {
 					// load user details from UserDetailsService
 					UserDetails userDetails = userDetailsService.loadUserByUsername(userName);
-			
+			//		System.out.println("granted auths "+ utils.getAuthoritiesFromJwtToken(token));
 					// create Authentication object , wrapping user details lifted from DB
 					UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
 							userDetails, null,userDetails.getAuthorities());
 					// set details in authentication object. Above ctor sets authentication flag to
 					// true => user already authenticated , so that other filters in the chain
 					// should not attempt auth again
-					//Save this authentication token in the sec ctx.
+//					Save this authentication token in the sec ctx.
 					SecurityContextHolder.getContext().setAuthentication(authentication);
 					System.out.println("-------------------------------------------------------------------");
 

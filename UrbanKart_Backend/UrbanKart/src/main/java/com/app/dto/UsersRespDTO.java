@@ -10,6 +10,10 @@ public class UsersRespDTO{
 	private Role role;
 	private String mobileNumber;
 	
+	/*
+	 {"firstName":"Mathuresh","lastName":"Yadav","email":"m@gmail.com","password":"satyajeet","role":"CUSTOMER","mobileNumber":"1234567890",}*/
+	
+	
 	public UsersRespDTO() {
 		super();
 		System.out.println("in ctor "+getClass().getName());

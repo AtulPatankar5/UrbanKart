@@ -31,21 +31,17 @@ public class OrderController {
 
 	@GetMapping("/admin")
 	public ResponseEntity<?> getAllOrders() {
-
 		return new ResponseEntity<>(orderService.getAllOrders(), HttpStatus.CREATED);
 	}
 
 	@GetMapping("/user/{custId}")
 	public ResponseEntity<?> getMyOrders(@PathVariable Long custId) {
-
 		return new ResponseEntity<>(orderService.getMyOrders(custId), HttpStatus.CREATED);
 	}
 
 	@PutMapping("/user/cancel/{orderId}") // User
 	public ResponseEntity<String> cancelOrder(@PathVariable Long orderId) {
-		System.out
-				.println("In Order Cancel &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& ");
-
+		System.out.println("In Order Cancel ");
 		orderService.cancelOrder(orderId);
 		return new ResponseEntity<String>("Order Deleted", HttpStatus.CREATED);
 	}

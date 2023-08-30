@@ -54,11 +54,11 @@ public class WebSecurityConfig {
 				.antMatchers("/order/admin").hasAuthority("ADMIN")
 				.antMatchers("/order/user/cancel/**").hasAuthority("CUSTOMER")
 				.antMatchers("/cartitem/**").hasAuthority("CUSTOMER")
-				.antMatchers("/cart/**").hasAuthority("CUSTOMER").anyRequest().authenticated()
-				.and()
-				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-				.and()
-				.addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class);//this filter is called before the usernamepassword filter is called 
+				.antMatchers("/cart/**").hasAuthority("CUSTOMER")
+
+				.anyRequest().authenticated().and().sessionManagement()
+				.sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+				.addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class);
 
 		return http.build();
 

@@ -4,7 +4,7 @@ import {Modal , ModalHeader ,ModalBody } from "reactstrap";
 import Orderstatus from "../models/orderStatus";
 import store from '../redux/store';
 import {  toast } from 'react-toastify';
-
+import './table.css' ;
 
 const MyOrders = () => {
 
@@ -123,36 +123,24 @@ const MyOrders = () => {
       <table class="table">
         <thead class="thead-dark">
           <tr>
-            <th scope="col">Order Id</th>
+            <th scope="col">OId</th>
             <th scope="col">Product</th>
             <th scope="col">Name</th>
-            <th scope="col">description</th>
-            <th scope="col">Quantity</th>
+            {/* <th scope="col">Desc</th> */}
+            {/* <th scope="col">Quantity</th> */}
             <th scope="col">Total Price</th>
-            <th scope="col">Customer Name</th>
-            <th scope="col">Address</th>
+            {/* <th scope="col">Customer Name</th> */}
+            {/* <th scope="col">Address</th>
             <th scope="col">City</th>
-            <th scope="col">Pin Code</th>
+            <th scope="col">Pin Code</th> */}
             <th scope="col">Mobile Number</th>
             <th scope="col">Status</th>
-            <th scope="col">Order date</th>
-            <th scope="col">Delivery Date</th>
+            {/* <th scope="col">Order date</th> */}
+            <th scope="col">Delivered</th>
             <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
-
-          {/* // {
-//     "orderDate": "2023-03-12",
-//     "deliveryDate": "2024-12-12",
-//     "status": "PLACED",
-//     "totalPrice": 409.0,
-//     "shippingPrice": 40.0,
-//     "userOrdered": 3,
-//     "address": 2
-// } */}
-
-
           {
             orders.map((order) => {
               return (
@@ -172,22 +160,20 @@ const MyOrders = () => {
                                 />
                             </td>
                             <td >{oDetails.productId.name}</td>
-                            <td >{oDetails.productId.description}</td>
-                            <td >{oDetails.quantity}</td>
+                            {/* <td >{oDetails.productId.description}</td> */}
+                            {/* <td >{oDetails.quantity}</td> */}
                             <td >{oDetails.totalPrice + order.shippingPrice}</td>
-                            <td >{order.userOrdered.firstName + " " + order.userOrdered.lastName}</td>
-                            <td >{
+                            {/* <td >{order.userOrdered.firstName + " " + order.userOrdered.lastName}</td> */}
+                            {/* <td >{
                               order.address.adressLine1 + " " +
                               order.address.adressLine2
                             }</td>
                             <td >{order.address.city}</td>
-                            <td >{order.address.zipCode}</td>
+                            <td >{order.address.zipCode}</td> */}
                             <td >{order.userOrdered.mobileNumber}</td>
                             <td >{order.status}</td>
-                            <td >{order.orderDate}</td>
+                            {/* <td >{order.orderDate}</td> */}
                             <td >{order.deliveryDate}</td>
-     
-
                           </tr>
                         </>
                       );

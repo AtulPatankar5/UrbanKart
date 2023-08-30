@@ -19,7 +19,6 @@ import com.fasterxml.jackson.annotation.JsonProperty.Access;
 @Valid
 @Entity
 @Table(name = "users")
-//@ToString(exclude = "password")
 public class Users extends BaseEntity{
 	
 	@Column(name="first_name" ,length = 25)
@@ -36,7 +35,6 @@ public class Users extends BaseEntity{
 	
 	@JsonProperty(access = Access.WRITE_ONLY)
 	@Column(name="password" ,length = 300, nullable = false)
-//	@Pattern(regexp ="((?=.*\\d)(?=.*[a-z])(?=.*[#@$*]).{5,20})",message = "Invalid Password !")
 	private String password;
 	
 	@Enumerated(EnumType.STRING)
@@ -53,7 +51,7 @@ public class Users extends BaseEntity{
 	
 	public Users() {
 		super();
-		System.out.println("in ctor "+getClass().getName());
+		System.out.println("in ctor " + getClass().getName());
 	}
 
 
@@ -144,5 +142,10 @@ public class Users extends BaseEntity{
 		return "Users [firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", password="
 				+ password + ", role=" + role + ", mobileNumber=" + mobileNumber + ", getId()=" + getId() + "]";
 	}
+	
+	
+	
+	
+	
 
 }

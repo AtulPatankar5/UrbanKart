@@ -37,11 +37,11 @@ const AddCategory = () => {
   return (
     <>
            
-            <div className="container my-3 py-3">
-                <h1 className="text-center">Add Category</h1>
+            <div className="container my-3 py-3 bg-dark">
+                <h1 className="text-center text-light">Add Category</h1>
                 <hr />
-                <div class="row my-4 h-100">
-                    <div className="col-md-4 col-lg-4 col-sm-8 mx-auto">
+                <div class="row my-4 h-50">
+                    <div className="col-md-7 col-lg-7 col-sm-5 mx-auto">
                    
 
                         {/* {errorMessage &&
@@ -51,7 +51,7 @@ const AddCategory = () => {
                         } */}
                         <form onSubmit={(e) => handleAddCategory(e)}>
                             <div class="form my-3">
-                                <label for="CName">Category Name </label>
+                                <label for="CName" class="text-light">Category Name </label>
                                 <input
                                     type="text"
                                     class="form-control"
@@ -66,7 +66,7 @@ const AddCategory = () => {
                                 />
                             </div>
                             <div class="form my-3">
-                                <label for="Desc">Description</label>
+                                <label for="Desc" class="text-light">Description</label>
                                 <textarea 
                                  class="form-control"
                                 name="description"

@@ -130,7 +130,7 @@ const Cart = () => {
 
   const ShowCart = () => {
     let subtotal = 0;
-    let shipping = 40;
+    let shipping = 200;
     let totalItems = 0;
     // state.map((item) => {
     //   return (subtotal += item.price * item.qty);
@@ -144,85 +144,132 @@ const Cart = () => {
         <section className="h-100 gradient-custom">
           <div className="container py-5">
             <div className="row d-flex justify-content-center my-4">
-              <div className="col-md-8">
+              <div className="col-md-4">{/* here you can change the size of item list image */}
                 <div className="card mb-4">
-                  <div className="card-header py-3">
-                    <h5 className="mb-0">Item List</h5>
+                  <div className="card-header py-3 bg-dark">
+                    <h5 className="mb-0"  style={{color:"#fff"}}>Item List</h5>
                   </div>
                   <div className="card-body">
                     {cart.cartItems.map((item) => {
                       return (
+                        // <div key={item.id}>
+                        //   <div className="row d-flex align-items-center">
+                        //     <div className="col-lg-3 col-md-12">
+                        //       <div
+                        //         className="bg-image rounded"
+                        //         data-mdb-ripple-color="light"
+                        //       >
+                        //         <img
+                        //           src={BASE_URL + item.productId.id + '/image'}//src={item.image}
+                        //           // className="w-100"
+                        //           alt={item.productName}
+                        //           width={100}
+                        //           height={75}
+                        //         />
+                        //       </div>
+                        //     </div>
+
+                        //     <div className="col-lg-5 col-md-6">
+                        //       <p>
+                        //         <strong>{item.productName}</strong>
+                        //       </p>
+                        //       {/* <p>Color: blue</p>
+                        //       <p>Size: M</p> */}
+                        //     </div>
+
+                        //     <div className="col-lg-4 col-md-6">
+                        //       <div
+                        //         className="d-flex mb-4"
+                        //         style={{ maxWidth: "300px" }}
+                        //       >
+                        //         <button
+                        //           className="btn px-3"
+                        //           onClick={() => {
+                        //             removeItem(item);
+                        //           }}
+                        //         >
+                        //           <i className="fas fa-minus"></i>
+                        //         </button>
+
+                        //         <p className="mx-5">{item.quantity}</p>
+
+                        //         <button
+                        //           className="btn px-3"
+                        //           onClick={() => {
+                        //             addItem(item);
+                        //           }}
+                        //         >
+                        //           <i className="fas fa-plus"></i>
+                        //         </button>
+                        //       </div>
+
+                        //       {/* <p className="text-start text-md-center">
+                        //         <strong>
+                        //           <span className="text-muted">{item.qty}</span>{" "}
+                        //           x ${item.price}
+                        //         </strong>
+                        //       </p> */}
+                        //     </div>
+                        //   </div>
+
+                        //   <hr className="my-4" />
+                        // </div>
                         <div key={item.id}>
-                          <div className="row d-flex align-items-center">
-                            <div className="col-lg-3 col-md-12">
-                              <div
-                                className="bg-image rounded"
-                                data-mdb-ripple-color="light"
-                              >
-                                <img
-                                  src={BASE_URL + item.productId.id + '/image'}//src={item.image}
-                                  // className="w-100"
-                                  alt={item.productName}
-                                  width={100}
-                                  height={75}
-                                />
-                              </div>
-                            </div>
+  <div className="row d-flex align-items-center">
+    <div className="col-lg-2 col-md-12">
+      <div className="bg-image rounded" data-mdb-ripple-color="light">
+        <img
+          src={`${BASE_URL}${item.productId.id}/image`} // Assuming BASE_URL is defined elsewhere
+          alt={item.productName}
+          width={200}
+          height={150}
+        />
+      </div>
+    </div>
 
-                            <div className="col-lg-5 col-md-6">
-                              <p>
-                                <strong>{item.productName}</strong>
-                              </p>
-                              {/* <p>Color: blue</p>
-                              <p>Size: M</p> */}
-                            </div>
+    <div className="col-lg-5 col-md-6">
+      <p>
+        <strong>{item.productName}</strong>
+      </p>
+    </div>
 
-                            <div className="col-lg-4 col-md-6">
-                              <div
-                                className="d-flex mb-4"
-                                style={{ maxWidth: "300px" }}
-                              >
-                                <button
-                                  className="btn px-3"
-                                  onClick={() => {
-                                    removeItem(item);
-                                  }}
-                                >
-                                  <i className="fas fa-minus"></i>
-                                </button>
+    <div className="col-lg-12 col-md-6">
+      <div className="d-flex mb-4" style={{ maxWidth: "300px" }}>
+        <button
+          className="btn btn-light px-3"
+          onClick={() => {
+            removeItem(item);
+          }}
+        >
+          <i className="fas fa-minus"></i>
+        </button>
 
-                                <p className="mx-5">{item.quantity}</p>
+        <p className="mx-5">{item.quantity}</p>
 
-                                <button
-                                  className="btn px-3"
-                                  onClick={() => {
-                                    addItem(item);
-                                  }}
-                                >
-                                  <i className="fas fa-plus"></i>
-                                </button>
-                              </div>
+        <button
+          className="btn btn-light px-3"
+          onClick={() => {
+            addItem(item);
+          }}
+        >
+          <i className="fas fa-plus"></i>
+        </button>
+      </div>
+    </div>
+  </div>
 
-                              {/* <p className="text-start text-md-center">
-                                <strong>
-                                  <span className="text-muted">{item.qty}</span>{" "}
-                                  x ${item.price}
-                                </strong>
-                              </p> */}
-                            </div>
-                          </div>
+  <hr className="my-4" />
+</div>
 
-                          <hr className="my-4" />
-                        </div>
                       );
                     })}
                   </div>
                 </div>
               </div>
-              <div className="col-md-4">
+              <div className="col-md-8">
                 <div className="card mb-4">
-                  <div className="card-header py-3 bg-light">
-                    <h5 className="mb-0">Order Summary</h5>
+                  <div className="card-header py-3 bg-dark">
+                    <h5 className="mb-0" style={{color:"#fff"}}>Order Summary</h5>
                   </div>
                   <div className="card-body">
                     <ul className="list-group list-group-flush">
@@ -240,7 +287,7 @@ const Cart = () => {
                         Shipping
                         <span>Rs {shipping}</span>
                       </li>
-                      <li className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                      <li className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-5">
                         <div>
                           <strong>Total amount</strong>
                         </div>

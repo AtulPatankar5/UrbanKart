@@ -13,8 +13,8 @@ const Home = () => {
           />
           <div align="right" className="card-img-overlay d-flex align-items-center">
             <div className="container">
-              <h5 className="card-title fs-1 text fw-lighter " style={{}}> <p>Shopping Hub</p>
-</h5>
+              <h5 className="card-title fs-1 text fw-lighter " style={{}}> <p>URBANKART</p>
+              </h5>
               <p className="card-text fs-5 d-none d-sm-block ">
               Shopping at Your DoorStep 
               

@@ -17,7 +17,7 @@ const ContactPage = () => {
   return (
     <>
     
-      <div className="container my-3 py-3">
+      {/* <div className="container my-3 py-3">
         <h1 className="text-center">Contact Us</h1>
         <hr />
         <div class="row my-4 h-100">
@@ -65,7 +65,54 @@ const ContactPage = () => {
             </form>
           </div>
         </div>
-      </div>
+      </div> */}
+
+<div class="container my-5 py-5">
+  <div class="row">
+    <div class="col-md-6 mx-auto bg-dark" >
+      <h1 class="text-center mb-4 text-light">Contact Us</h1>
+      <hr class="my-4" />
+      {/* <h3 class="mt-5 text-light">Mobile Number: +(91) 999999999</h3> */}
+      <form class="my-5" onSubmit={handleSubmit}>
+        <div class="form-group my-3 ">
+          <label for="Name " class="text-light">Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="Name"
+            placeholder="Enter your name"
+          />
+        </div>
+        <div class="form-group my-3">
+          <label for="Email" class="text-light">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="Email"
+            placeholder="name@example.com"
+          />
+        </div>
+        <div class="form-group my-3">
+          <label for="Password" class="text-light">Message</label>
+          <textarea
+            rows={5}
+            class="form-control"
+            id="Password"
+            placeholder="Enter your message"
+          ></textarea>
+        </div>
+        <div class="text-center">
+          <button
+            class="my-2 px-4 mx-auto btn btn-dark"
+            type="submit"
+          >
+            Send
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
       <Footer />
     </>
   );

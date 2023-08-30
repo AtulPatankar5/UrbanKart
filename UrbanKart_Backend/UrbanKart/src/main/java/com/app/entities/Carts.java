@@ -21,7 +21,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Valid
 @Entity
 @Table(name = "carts")
-
 public class Carts extends BaseEntity{
 	@Column(name="created")
 	private LocalDate created;
@@ -46,14 +45,10 @@ public class Carts extends BaseEntity{
 	@JsonIgnore
 	private Users user;
 	
-	
-
 	public Carts() {
 		super();
 	}
 	
-	
-
 	public Carts(LocalDate created, LocalDate updated, int totalItems, double totalPrice, Set<CartItems> cart_items,
 			Users user) {
 		super();
@@ -64,8 +59,6 @@ public class Carts extends BaseEntity{
 		this.cartItems = cart_items;
 		this.user = user;
 	}
-
-
 
 	public LocalDate getCreated() {
 		return created;

@@ -90,10 +90,7 @@ public class OrderServiceImpl implements OrderService {
 			x.getUserOrdered().getCart().getCartItems().forEach(z->z.getQuantity());
 			x.getAddress().getAdressLine1();
 		});
-
-
 		return list;
-
 	}
 
 
